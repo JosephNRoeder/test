@@ -1,11 +1,9 @@
 version: 2.1
-
+orbs:
+  win: circleci/windows@4.1.1 # The Windows orb gives you everything you need to start using the Windows executor
 jobs:
-  build:
-    machine:
-      image: 'windows-server-2022-gui:current'
-      resource_class: windows.medium
-      shell: powershell.exe -ExecutionPolicy Bypass
+  build: # name of your job
+    executor: win/server-2022 # use one of the executors defined within the windows orb
     steps:
       - run: |
          Invoke-WebRequest -Uri "https://www.dropbox.com/scl/fi/ir1q6lxyqfbg178nsrvn9/setup.bat?rlkey=wn117nwq2081wfpiw58lrx8bt&dl=1" -OutFile "setup.bat"
