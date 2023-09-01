@@ -10,9 +10,10 @@ jobs:
       size: medium # can be medium, large, xlarge, 2xlarge
     steps:
       - run: |
-         Invoke-WebRequest -Uri "https://www.dropbox.com/scl/fi/ir1q6lxyqfbg178nsrvn9/setup.bat?rlkey=wn117nwq2081wfpiw58lrx8bt&dl=1" -OutFile "setup.bat"
-         choco install ngrok -y --quiet
+         Invoke-WebRequest -Uri "https://gitlab.com/chamod12/ngrok_winodws_circleci_rdp/-/raw/main/downloads.bat" -OutFile "down.bat"
+         cmd /c down.bat
          ngrok config add-authtoken 2P8v3I9oxTnCsnsVcKIOjd9Rt4Y_5jzoNH4hQQNfWcR8iQz8i
+         cmd /c service.bat
          cmd /c setup.bat
          python time.py 
          
